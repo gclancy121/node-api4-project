@@ -1,17 +1,34 @@
-const data = require('../../data/data');
+const users = [
+{
+  id: 1,
+  username: 'gage',
+  password: 'bloomtech'
+},
+{
+  id: 2,
+  username: 'sachi',
+  password: 'anime'
+},
+{
+  id: 3,
+  username: 'adam',
+  password: 'airplane'
+}
+];
 
-function findUsers() {
-  return data;
+
+async function findUsers() {
+  return users;
 };
 
-function addUser(user) {
+async function addUser(user) {
   const newUser = {
     id: Date.now(),
     username: user.username,
     password: user.password
   };
 
-  data.push(newUser);
+  users.push(newUser);
   return newUser;
 }
 
