@@ -1,5 +1,6 @@
 const express = require('express');
 const Users = require('./users-model');
+const {validateName} = require('./users-middleware');
 
 const router = express.Router();
 
@@ -11,8 +12,8 @@ router.get('/', (req, res, next) => {
   .catch(error => next(error));
 });
 
-router.post('/', (req, res, next) => {
-  Users.addUser(req.body).then(result => {
+router.post('/', validateName, (req, res, next) => {
+  Users.addUser(req.newUser).then(result => {
     res.status(201).json(result);
   }).catch(err => next(err));
 })

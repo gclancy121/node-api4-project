@@ -21,6 +21,11 @@ async function findUsers() {
   return users;
 };
 
+async function findUsersByName(username) {
+  const filteredUsers = users.filter(name => name.username === username);
+  return filteredUsers;
+}
+
 async function addUser(user) {
   const newUser = {
     id: Date.now(),
@@ -35,5 +40,6 @@ async function addUser(user) {
 module.exports = {
   addUser,
   findUsers,
+  findUsersByName,
   
 }
